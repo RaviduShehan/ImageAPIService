@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+    environment {
+        dockerImageName = "shehan97105/imageservice"
+        dockerImage = null
+    }
+    stages{
+        stage('Deploy to Dev Enviornment') {
+                steps {
+                    script {
+                         kubernetesDeploy(configs: 'imagedev.yml', kubeconfigId:'kubernetesconfigpwd')
+                        }
+                    }
+                }
+        stage('Deploy to Test Enviornment') {
+                steps {
+                    script {
+                         kubernetesDeploy(configs: 'imagetest.yml', kubeconfigId:'kubernetesconfigpwd')
+                        }
+                }
+        }
+        stage('Deploy to Production Enviornment') {
+                steps {
+                    script {
+                         kubernetesDeploy(configs: 'imageprod.yml', kubeconfigId:'kubernetesconfigpwd')
+                        }
+                    }
+        }
+    }
+}

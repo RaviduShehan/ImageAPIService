@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+   name: imageapi-prod
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: imageapi-prod
+  strategry:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: imageapi-prod
+    spec:
+      containers:
+      - name: imageapi-prod
+        image: shehan97105/imageservice:latest
+        ports:
+        - containerPort: 5004

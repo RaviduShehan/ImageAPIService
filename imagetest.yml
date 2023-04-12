@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+   name: imageapi-test
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: imageapi-test
+  template:
+    metadata:
+      labels:
+        app: imageapi-test
+    spec:
+      containers:
+      - name: imageapi-test
+        image: shehan97105/imageservice:latest
+        ports:
+        - containerPort: 5004
+
