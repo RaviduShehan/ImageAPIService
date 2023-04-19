@@ -12,7 +12,7 @@ pipeline {
         gkeZone = "us-central1-c"
         gkeCredentialsId = "apiservicesauth"
         NAMESPACE_ID="dev"
-        DEPLOYMENT_ID="completionapi"
+        DEPLOYMENT_ID="imageapi"
     }
     stages{
         stage('Get docker Image'){
