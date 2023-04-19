@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        dockerImageName = "shehan97105/imageservice"
+        dockerImageName = "shehan97105/imageservice:${GIT_COMMIT}"
         dockerImage = null
     }
     stages {
