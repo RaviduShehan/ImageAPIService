@@ -38,7 +38,7 @@ pipeline {
                     credentialsId: gkeCredentialsId,
                     clusterName: gkeClusterName,
                     location: gkeZone,
-                    manifestPattern: 'completion.yml'
+                    manifestPattern: 'edit.yml'
                 ])
             }
         }
