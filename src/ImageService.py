@@ -9,6 +9,7 @@ from firebase_admin import credentials
 #setup firebase credentials
 cred = credentials.Certificate("serviceAccountKey.json")
 firebase_admin.initialize_app(cred)
+database = os.environ.get('FIREBASE_DATABASE_COLLECTION')
 
 app = Flask(__name__)
 openai.api_key = os.environ.get('OPENAI_API_KEY')
@@ -20,7 +21,7 @@ db = firestore.Client(project=project_id)
 @app.route('/')
 def image():
     # Save service name, status, and timestamp to Firestore
-    service_ref = db.collection('Services').document('ImageService_Status')
+    service_ref = db.collection(database).document('ImageService_Status')
     print("ImageAPI Service Started.....")
     service_data = {
         'service_name': 'Image',
