@@ -1,0 +1,95 @@
+{
+	"info": {
+		"_postman_id": "772d38e5-c780-44c3-9252-e6881e0f104d",
+		"name": "ImageAPITestSuite",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25119759"
+	},
+	"item": [
+		{
+			"name": "Test Missing Parameter",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Test case 1: Status code is 400\r",
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"// Test case 2: Prompt parameter is missing\r",
+							"pm.test(\"Prompt parameter is missing\", function () {\r",
+							"    pm.expect(pm.response.json()).to.eql({\"error\": \"Prompt parameter is missing\"});\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://34.132.224.27/image/",
+					"protocol": "http",
+					"host": [
+						"34",
+						"132",
+						"224",
+						"27"
+					],
+					"path": [
+						"image",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Successfull Respone",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful request returns status code 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://34.132.224.27/image?prompt=dog",
+					"protocol": "http",
+					"host": [
+						"34",
+						"132",
+						"224",
+						"27"
+					],
+					"path": [
+						"image"
+					],
+					"query": [
+						{
+							"key": "prompt",
+							"value": "dog"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
